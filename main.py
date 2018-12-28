@@ -1,4 +1,4 @@
-from dataset import ClassificationDataset
+from dataset import LabeledDataset
 import evaluation as evl
 import pandas as pd
 import sklearn.ensemble as ens
@@ -17,8 +17,11 @@ classifiers = [
     ens.RandomForestClassifier()
 ]
 
-df   = pd.read_csv("../data/train+test.csv").replace({'yes': 1, 'no': 0})
-data = ClassificationDataset.from_dataframe(df)
+def test(data, classifier):
+    clf = data.train(classifier)
+    return evl.auc(data, clf)
 
-aucs = [evl.auc(data, data.train(classifier)) for classifier in classifiers]
+df   = pd.read_csv("../data/train+test.csv").replace({'yes': 1, 'no': 0})
+data = LabeledDataset.from_dataframe(df)
+aucs = [test(data, classifier) for classifier in classifiers]
 aucs

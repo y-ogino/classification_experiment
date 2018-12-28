@@ -6,7 +6,7 @@ def split(df):
     df2 = df.iloc[m:]
     return (df1, df2)
 
-class ClassificationDataset:
+class LabeledDataset:
     def __init__(self, X, y, X_test, y_test):
         self.X = X
         self.y = y
