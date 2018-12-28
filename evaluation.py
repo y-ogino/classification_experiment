@@ -2,8 +2,7 @@ from sklearn import metrics
 
 def auc(dataset, clf):
     y_proba     = clf.predict_proba(dataset.X_test)[:,1]
-    fpr, tpr, _ = metrics.roc_curve(dataset.y_test, y_proba)
-    return  metrics.auc(fpr, tpr)
+    return  metrics.roc_auc_score(dataset.y_test, y_proba)
 
 def confusion_matrix(dataset, clf):
     y_pred = clf.predict(dataset.X_test)
