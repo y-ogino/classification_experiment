@@ -4,6 +4,7 @@ import pandas as pd
 import sklearn.ensemble as ens
 from sklearn.tree import DecisionTreeClassifier as tree
 
+n = 50
 classifiers = [
     tree(min_samples_split = 100),
     tree(min_samples_split = 40),
@@ -11,10 +12,10 @@ classifiers = [
     tree(min_samples_split = 20),
     tree(min_samples_split = 10),
     ens.AdaBoostClassifier(),
-    ens.BaggingClassifier(),
-    ens.ExtraTreesClassifier(),
-    ens.GradientBoostingClassifier(),
-    ens.RandomForestClassifier()
+    ens.BaggingClassifier(n_estimators = n),
+    ens.ExtraTreesClassifier(n_estimators = n),
+    ens.GradientBoostingClassifier(n_estimators = n),
+    ens.RandomForestClassifier(n_estimators = n)
 ]
 
 def test(data, classifier):
