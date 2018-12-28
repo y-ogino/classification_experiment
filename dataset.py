@@ -1,5 +1,4 @@
 import pandas as pd
-from sklearn import metrics
 
 def split(df):
     m   = int(len(df.index) / 2)
@@ -22,8 +21,5 @@ class ClassificationDataset:
         y, y_test = split(y)
         return cls(X, y, X_test, y_test)
 
-    def evaluate(self, classifier):
-        clf     = classifier.fit(self.X, self.y)
-        y_proba = clf.predict_proba(self.X_test)[:,1]
-
-        return metrics.roc_curve(self.y_test, y_proba)
+    def train(self, classifier):
+        return classifier.fit(self.X, self.y)
