@@ -10,4 +10,4 @@ def confusion_matrix(dataset, clf):
 
 def f1_score(dataset, clf):
     y_pred = clf.predict(dataset.X_test)
-    return metrics.f1_score(dataset.y_test, y_pred)
+    return metrics.f1_score(dataset.y_test, y_pred, pos_label = 0)
