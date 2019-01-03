@@ -11,3 +11,12 @@ classifiers = [
     GradientBoostingClassifier(n_estimators = 50),
     RandomForestClassifier(n_estimators = 50, max_depth = 5, class_weight = "balanced")
 ]
+
+classifier_names = [
+    "DecisionTree 1",
+    "DecisionTree 2",
+    "AdaBoost",
+    "Bagging",
+    "GradientBoosting",
+    "RandomForest"
+]
